@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Proyecto</title>
+    <style>
+      body{
+       background-color: red;
+      }
+    </style>
+    <script>
+      function autoRefreshPage() {
+        setTimeout(() => {
+          window.location.reload();
+        }, 10000);
+      }
+      document.addEventListener('DOMContentLoaded', function() {
+        autoRefreshPage();
+        document.querySelector('#salida1_on').addEventListener('click', function() {
+          fetch('/salida1_on');
+        });
+        document.querySelector('#salida1_off').addEventListener('click', function() {
+          fetch('/salida1_off');
+        });
+        document.querySelector('#salida2_on').addEventListener('click', function() {
+          fetch('/salida2_on');
+        });
+        document.querySelector('#salida2_off').addEventListener('click', function() {
+          fetch('/salida2_off');
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>SSR COMPOSTAJE</h1>
+    <p>Porcentaje de Humedad: {{ msg_analog_01 }}</p>
+    <p>Valor de Temperatura: {{ msg_analog_02 }}</p>
+    <p>VENTILADORES: <button id="salida1_on">ON</button> / <button id="salida1_off">OFF</button></p>
+    <p>E-BOMBA: <button id="salida2_on">ON</button> / <button id="salida2_off">OFF</button></p>
+  </body>
+</html>

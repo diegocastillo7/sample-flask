@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Humedad es:</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1>Humedad valor:</h1>
+    <div id="datos"></div>
+    <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script>
+      var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+      // Recibir los datos del socket y actualizar la página
+      socket.on('datos', function(data) {
+        console.log(data.datos)
+        $('#datos').html(data.datos);
+      });
+    </script>
+  </body>
+</html>
