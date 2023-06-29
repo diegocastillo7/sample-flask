@@ -1,260 +1,335 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your New Flask App</title>
-
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Almarai:wght@800&amp;family=Nunito+Sans&amp;display=swap" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/estilos.css') }}">
+    <title>Proyecto SSR</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta http-equiv="refresh" content="60">
 </head>
-
 <body>
-  <div class="container">
-    <div class="content">
-      <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjY3IDE3NS4yIDE3Ni40IDE3Ni41IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDY3IDE3NS4yIDE3Ni40IDE3Ni41OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojRkZGRkZGO30NCjwvc3R5bGU+DQo8ZyBpZD0iWE1MSURfMjI5XyI+DQoJPGcgaWQ9IlhNTElEXzY5MF8iPg0KCQk8ZyBpZD0iWE1MSURfNjkxXyI+DQoJCQk8Zz4NCgkJCQk8ZyBpZD0iWE1MSURfNDRfIj4NCgkJCQkJPGcgaWQ9IlhNTElEXzQ4XyI+DQoJCQkJCQk8cGF0aCBpZD0iWE1MSURfNDlfIiBjbGFzcz0ic3QwIiBkPSJNMTU1LjIsMzUxLjd2LTM0LjJjMzYuMiwwLDY0LjMtMzUuOSw1MC40LTc0Yy01LjEtMTQuMS0xNi40LTI1LjQtMzAuNS0zMC41DQoJCQkJCQkJYy0zOC4xLTEzLjgtNzQsMTQuMi03NCw1MC40bDAsMEg2N2MwLTU3LjcsNTUuOC0xMDIuNywxMTYuMy04My44YzI2LjQsOC4zLDQ3LjUsMjkuMyw1NS43LDU1LjcNCgkJCQkJCQlDMjU3LjksMjk1LjksMjEzLDM1MS43LDE1NS4yLDM1MS43eiIvPg0KCQkJCQk8L2c+DQoJCQkJCTxwb2x5Z29uIGlkPSJYTUxJRF80N18iIGNsYXNzPSJzdDAiIHBvaW50cz0iMTU1LjMsMzE3LjYgMTIxLjMsMzE3LjYgMTIxLjMsMjgzLjYgMTIxLjMsMjgzLjYgMTU1LjMsMjgzLjYgMTU1LjMsMjgzLjYgCQkJCQkNCgkJCQkJCSIvPg0KCQkJCQk8cG9seWdvbiBpZD0iWE1MSURfNDZfIiBjbGFzcz0ic3QwIiBwb2ludHM9IjEyMS4zLDM0My44IDk1LjEsMzQzLjggOTUuMSwzNDMuOCA5NS4xLDMxNy42IDEyMS4zLDMxNy42IAkJCQkJIi8+DQoJCQkJCTxwYXRoIGlkPSJYTUxJRF80NV8iIGNsYXNzPSJzdDAiIGQ9Ik05NS4xLDMxNy42SDczLjJsMCwwdi0yMS45bDAsMGgyMS45bDAsMFYzMTcuNnoiLz4NCgkJCQk8L2c+DQoJCQk8L2c+DQoJCTwvZz4NCgk8L2c+DQo8L2c+DQo8L3N2Zz4NCg==" alt="DigitalOcean Logo" width="100" />
-      <h1>Welcome to your new <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask App</a>!</h1>
+<img src="/static/css/logoe.png" alt="Texto alternativo de la imagen" id="img_logo">
+<img src="/static/css/escudo62.png" alt="Texto alternativo de la imagen" id="img_escudo">
+<img src="/static/css/logo_acre.png" alt="Texto alternativo de la imagen" id="img_logo_acre">
+<div id="centrar-contenido">
+    <h1 class="titulo">SSR COMPOSTAJE</h1>
+    <h2><small>SISTEMA DE SUPERVISIÓN REMOTO - COMPOSTAJE</small></h2>
+    {% if datos %}
+    <div class="container">
+        <div class="right">
+            <h1 class="pilax">PILA X</h1>
+            <div class="dato">
+                <h1 class="humedadx">HUMEDAD[%]</h1>
+                <span class="dato-nombre">15CM:</span>
+                <span class="dato-valor">{{ datos['H-X-15CM'] }}</span>
+            </div>
+            <div class="dato">
+                <span class="dato-nombre">75CM:</span>
+                <span class="dato-valor">{{ datos['H-X-75CM'] }}</span>
+            </div>
+            <div class="dato">
+                <span class="dato-nombre">PROM:</span>
+                <span class="dato-valor" id="prom-hx">{{ datos['PROM H-X'] }}</span>
+            </div>
+            <div>
+                <input class="input" type="number" name="HUM MIN X" id="hum-min-x" oninput="guardarValor('hum-min-x')">
+                <input class="input" type="number" name="HUM MAX X" id="hum-max-x" oninput="guardarValor('hum-max-x')">
+            </div>
+            <div class="dato">
+                <h1 class="tempx">TEMPERATURA[°C]</h1>
+                <span class="dato-nombre">15CM:</span>
+                <span class="dato-valor">{{ datos['T-X-15CM'] }}</span>
+            </div>
+            <div class="dato">
+                <span class="dato-nombre">75CM:</span>
+                <span class="dato-valor">{{ datos['T-X-75CM'] }}</span>
+            </div>
+            <div class="dato">
+                <span class="dato-nombre">PROM:</span>
+                <span class="dato-valor" id="prom-tx">{{ datos['PROM T-X'] }}</span>
+            </div>
+            <div>
+                <input class="input" type="number" name="TEM MIN X" id="tem-min-x" oninput="guardarValor('tem-min-x')">
+                <input class="input" type="number" name="TEM MAX X" id="tem-max-x" oninput="guardarValor('tem-max-x')">
+            </div>
+        </div>
+        <div class="left">
+            <h1 class="pilay">PILA Y</h1>
+            <div class="dato">
+                <h1 class="humedady">HUMEDAD[%]</h1>
+                <span class="dato-nombre">15CM:</span>
+                <span class="dato-valor">{{ datos['H-Y-15CM'] }}</span>
+            </div>
+            <div class="dato">
+                <span class="dato-nombre">75CM:</span>
+                <span class="dato-valor">{{ datos['H-Y-75CM'] }}</span>
+            </div>
+            <div class="dato">
+                <span class="dato-nombre">PROM:</span>
+                <span class="dato-valor" id="prom-hy">{{ datos['PROM H-Y'] }}</span>
+            </div>
+            <div>
+                <input class="input" type="number" name="HUM MIN Y" id="hum-min-y" oninput="guardarValor('hum-min-y')">
+                <input class="input" type="number" name="HUM MAX Y" id="hum-max-y" oninput="guardarValor('hum-max-y')">
+            </div>
+            <div class="dato">
+                <h1 class="tempy">TEMPERATURA[°C]</h1>
+                <span class="dato-nombre">15CM:</span>
+                <span class="dato-valor">{{ datos['T-Y-15CM'] }}</span>
+            </div>
+            <div class="dato">
+                <span class="dato-nombre">75CM:</span>
+                <span class="dato-valor">{{ datos['T-Y-75CM'] }}</span>
+            </div>
+            <div class="dato">
+                <span class="dato-nombre">PROM:</span>
+                <span class="dato-valor" id="prom-ty">{{ datos['PROM T-Y'] }}</span>
+            </div>
+            <div>
+                <input class="input" type="number" name="TEM MIN Y" id="tem-min-y" oninput="guardarValor('tem-min-y')">
+                <input class="input" type="number" name="TEM MAX Y" id="tem-max-y" oninput="guardarValor('tem-max-y')">
+            </div>
+        </div>
+        <!-- Añade aquí los divs para los demás datos -->
+        {% else %}
+        <p>No se han recibido datos aún.</p>
+        {% endif %}
 
-      <p>
-        This application is an example of how to deploy a Flask Application to DigitalOcean's App
-        Platform. Check out their <a href="https://flask.palletsprojects.com/en/1.1.x/quickstart/">documentation</a> to
-        learn more about flask.
-      </p>
+        <script>
+      function guardarValor(inputId) {
+        var input = document.getElementById(inputId);
+        localStorage.setItem(inputId, input.value);
+      }
+      function cargarValor(inputId) {
+        var input = document.getElementById(inputId);
+        var valorGuardado = localStorage.getItem(inputId);
+        if (valorGuardado) {
+        input.value = valorGuardado;
+      }
+      return valorGuardado;
+    }
+    window.onload = function() {
+      let hum_min_y = cargarValor('hum-min-y');
+      let hum_max_y = cargarValor('hum-max-y');
 
+      let prom_hy = document.getElementById("prom-hy").textContent;
+      let prom_hy_num = parseFloat(prom_hy);
+      console.log(prom_hy_num);
+      console.log(hum_min_y);
+      console.log(hum_max_y);
+      if(prom_hy_num<hum_min_y){
+      alert("Humedad insuficiente en PILA Y, activar VALVULA Y");
+      }
+      if(prom_hy_num>hum_max_y){
+      alert("Oxigeno insuficiente en PILA Y, realizar volteo o activar VENTILADOR");
+      }
+
+      let tem_min_y = cargarValor('tem-min-y');
+      let tem_max_y = cargarValor('tem-max-y');
+
+      let prom_ty = document.getElementById("prom-ty").textContent;
+      let prom_ty_num = parseFloat(prom_ty);
+      console.log(prom_ty_num);
+      console.log(tem_min_y);
+      console.log(tem_max_y);
+      if(prom_ty_num<tem_min_y){
+        alert("Humedad insuficiente en PILA Y, activar VALVULA Y");
+      }
+      if(prom_ty_num>tem_max_y){
+      alert("Ventilacion y humedad insuficiente en PILA Y, realizar volteo, activar VENTILADOR y fijar humedad Y [55%-60%]");
+      }
+
+      let hum_min_x = cargarValor('hum-min-x');
+      let hum_max_x = cargarValor('hum-max-x');
+
+      let prom_hx = document.getElementById("prom-hx").textContent;
+      let prom_hx_num = parseFloat(prom_hx);
+      console.log(prom_hx_num);
+      console.log(hum_min_x);
+      console.log(hum_max_x);
+      if(prom_hx_num<hum_min_x){
+      alert("Humedad insuficiente en PILA X, activar VALVULA X");
+      }
+      if(prom_hx_num>hum_max_x){
+      alert("Oxigeno insuficiente en PILA X, realizar volteo o activar VENTILADOR");
+      }
+
+      let tem_min_x = cargarValor('tem-min-x');
+      let tem_max_x = cargarValor('tem-max-x');
+
+      let prom_tx = document.getElementById("prom-tx").textContent;
+      let prom_tx_num = parseFloat(prom_tx);
+      console.log(prom_tx_num);
+      console.log(tem_min_x);
+      console.log(tem_max_x);
+      if(prom_tx_num<tem_min_x){
+      alert("Humedad insuficiente en PILA X, activar VALVULA X");
+      }
+      if(prom_tx_num>tem_max_x){
+      alert("Ventilacion y humedad insuficiente en PILA X, realizar volteo, activar VENTILADOR y fijar humedad X [55%-60%]");
+      }
+
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+
+        <div class="contenedor_out">
+            <div class="contenido">
+                <h1>VENTILADOR</h1>
+                <div class="botones">
+                    <button id="uno">20[S]</button>
+                    <button id="dos">40[S]</button>
+                    <button id="tres">80[S]</button>
+                    <button id="off">OFF</button>
+                </div>
+                <script>
+    $(document).ready(function() {
+
+        $('#uno').click(function() {
+          $.post('/led', JSON.stringify({'value': 'uno'}), function(data) {
+            console.log(data);
+          });
+        });
+
+        $('#dos').click(function() {
+          $.post('/led', JSON.stringify({'value': 'dos'}), function(data) {
+            console.log(data);
+          });
+        });
+
+        $('#tres').click(function() {
+          $.post('/led', JSON.stringify({'value': 'tres'}), function(data) {
+            console.log(data);
+          });
+        });
+
+        $('#off').click(function() {
+          $.post('/led', JSON.stringify({'value': 'off'}), function(data) {
+            console.log(data);
+          });
+        });
+      });
+
+                </script>
+            </div>
+
+            <div class="contenido">
+                <h1>VALVULA X</h1>
+                <div class="botones">
+                    <button id="uno_vx">20[S]</button>
+                    <button id="dos_vx">40[S]</button>
+                    <button id="tres_vx">80[S]</button>
+                    <button id="off_vx">OFF</button>
+                </div>
+                <script>
+      $(document).ready(function() {
+
+        $('#uno_vx').click(function() {
+          $.post('/valvx', JSON.stringify({'valuevx': 'uno_vx'}), function(data) {
+            console.log(data);
+          });
+        });
+
+        $('#dos_vx').click(function() {
+          $.post('/valvx', JSON.stringify({'valuevx': 'dos_vx'}), function(data) {
+            console.log(data);
+          });
+        });
+
+        $('#tres_vx').click(function() {
+          $.post('/valvx', JSON.stringify({'valuevx': 'tres_vx'}), function(data) {
+            console.log(data);
+          });
+        });
+
+        $('#off_vx').click(function() {
+          $.post('/valvx', JSON.stringify({'valuevx': 'off_vx'}), function(data) {
+            console.log(data);
+          });
+        });
+      });
+
+                </script>
+            </div>
+            <div class="contenido">
+                <h1>VALVULA Y</h1>
+                <div class="botones">
+                    <button id="uno_vy">20[S]</button>
+                    <button id="dos_vy">40[S]</button>
+                    <button id="tres_vy">80[S]</button>
+                    <button id="off_vy">OFF</button>
+                </div>
+                <script>
+      $(document).ready(function() {
+
+        $('#uno_vy').click(function() {
+          $.post('/valvy', JSON.stringify({'valuevy': 'uno_vy'}), function(data) {
+            console.log(data);
+          });
+        });
+
+        $('#dos_vy').click(function() {
+          $.post('/valvy', JSON.stringify({'valuevy': 'dos_vy'}), function(data) {
+            console.log(data);
+          });
+        });
+
+        $('#tres_vy').click(function() {
+          $.post('/valvy', JSON.stringify({'valuevy': 'tres_vy'}), function(data) {
+            console.log(data);
+          });
+        });
+
+        $('#off_vy').click(function() {
+          $.post('/valvy', JSON.stringify({'valuevy': 'off_vy'}), function(data) {
+            console.log(data);
+          });
+        });
+      });
+
+
+                </script>
+            </div>
+        </div>
     </div>
 
-    <div class="links">
-      <a href="https://github.com/MasonEgger/python-slackbot-sampleapp" target="_blank"
-        rel="noopener noreferrer"><strong>Sample Slackbot using Flask</strong>
-        <span>Learn how to build a Slackbot in Python</span>
-      </a>
-      <a href="https://www.digitalocean.com/docs/app-platform/languages-frameworks/python/" target="_blank"
-        rel="noopener noreferrer"><strong>DigitalOcean App Platform Docs for Flask</strong>
-        <span>DigitalOcean's reference documentation for Flask</span>
-      </a>
-      <a href="https://www.digitalocean.com/docs/app-platform/" target="_blank" rel="noopener noreferrer"><strong>App
-          Platform Documentation</strong><span>Learn about DigitalOcean's App Platform</span></a>
-      <a href="https://www.digitalocean.com/docs/droplets/how-to/" target="_blank" rel="noopener noreferrer"><strong>App
-          Platform API Documentation</strong>
-        <span>REST API Documentation for App Platform</span>
-      </a>
+    <div class="texto_superior">
+        <div class="bloque1">
+            <p>TRABAJO DE GRADO</p>
+            <p>INGENIERIA ELECTRONICA</p>
+            <p>AUTOR: DIEGO CASTILLO</p>
+        </div>
+        <div class="bloque2">
+            <p>DIRECTOR:</p>
+            <p>MSC. HEBER PABON</p>
+        </div>
+        <div class="bloque3">
+            <p>COORDINACION DE LABORATORIOS</p>
+            <p>FREDY SOLANO ORTEGA</p>
+        </div>
+        <div class="bloque4">
+            <p>(PLAN DE GESTION INTEGRAL DE</p>
+            <p>RESIDUOS HOSPITALARIOS Y SIMILARES)</p>
+            <p>PGIRHS</p>
+        </div>
+        <div class="bloque5">
+            <p>CESAR LIZARAZO</p>
+        </div>
     </div>
-  </div>
 
-  <div id="stripes">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      padding: 50px;
-      min-height: 100vh;
-      position: relative;
-      color: #fff;
-      font-family: "Nunito Sans", sans-serif;
-      font-size: 19px;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: "Almarai", sans-serif;
-    }
-
-    :root {
-      --background: linear-gradient(150deg,
-          #17acff 15%,
-          #016aff 70%,
-          #68a6ff 94%);
-      --first: #53f;
-      --second: #4553ff;
-      --third: #4f40ff;
-      --fourth: #25ddf5;
-      --fifth: #1fa2ff;
-    }
-
-    #stripes {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      width: 100%;
-      height: 100vw;
-      display: grid;
-      background: var(--background);
-      grid-template-columns: repeat(6, 1fr);
-      grid-template-rows: repeat(4, 1fr);
-      transform: skewY(-12deg);
-      transform-origin: 0;
-    }
-
-    #stripes span {
-      /* border: 1px solid #c00c00; */
-    }
-
-    #stripes span:first-child {
-      grid-column: span 1;
-      background: var(--first);
-    }
-
-    #stripes span:nth-child(2) {
-      grid-column: span 2;
-      background: var(--second);
-    }
-
-    #stripes span:nth-child(3) {
-      grid-column: span 2;
-      background: var(--third);
-    }
-
-    #stripes span:nth-child(4) {
-      grid-column: 6;
-      grid-row: 3;
-      background: var(--fourth);
-    }
-
-    #stripes span:nth-child(5) {
-      grid-column: span 2;
-      grid-row: 4;
-      background: var(--fifth);
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 50px 0;
-    }
-
-    .content {
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-    }
-
-    h1 a {
-      color: #dbf1f5;
-    }
-
-    h1 a:hover {
-      color: #7decff;
-    }
-
-    p {
-      margin-bottom: 50px;
-    }
-     p a {
-      color:chartreuse;
-    }
-    
-    li {
-      text-align: left
-    }
-
-    code {
-      display: inline-block;
-      padding: 3px 6px;
-      margin-left: 3px;
-      margin-right: 3px;
-      border-radius: 5px;
-      font-size: 0.8rem;
-      background: #1a2279;
-      color: #dbf1f5;
-    }
-
-    .links {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .links a {
-      position: relative;
-      display: block;
-      background: rgba(255, 255, 255, 0.85);
-      border-radius: 5px;
-      padding: 20px;
-      font-size: 1.1rem;
-      text-decoration: none;
-      color: #222;
-      transition: 0.3s ease all;
-      overflow: hidden;
-    }
-
-    .links a:before,
-    .links a:after {
-      font-size: 40px;
-      display: block;
-      position: absolute;
-    }
-
-    .links a:before {
-      content: "";
-      top: -80%;
-      right: -150px;
-      width: 250px;
-      height: 250px;
-      background: rgba(125, 236, 255, 0.6);
-      pointer-events: none;
-      transform: rotate(-25deg);
-      transition: 0.4s cubic-bezier(0.34, 0.31, 0, 1.81) transform;
-    }
-
-    .links a:after {
-      content: "👉";
-      top: 0;
-      bottom: 0;
-      display: flex;
-      align-items: center;
-      right: 30px;
-      transform: translateX(80px);
-      transition: 0.3s cubic-bezier(0.34, 0.31, 0, 1.81) transform;
-    }
-
-    .links a:hover {
-      background: rgba(255, 255, 255, 0.9);
-      box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.5);
-    }
-
-    .links a:hover:before {
-      transform: rotate(-25deg) translateX(60px);
-    }
-
-    .links a:hover:after {
-      transform: none;
-    }
-
-    .links a strong,
-    .links a span {
-      position: relative;
-      z-index: 1;
-    }
-
-    .links a strong {
-      font-weight: bold;
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .links a span {
-      color: #787878;
-      font-size: 0.9rem;
-    }
-  </style>
+</div>
 </body>
-
 </html>

@@ -1,0 +1,224 @@
+body {
+  background-image: url('/static/css/fondo.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  color: #000000;
+}
+
+#prom-hx, #prom-tx, #prom-hy, #prom-ty{
+  font-size: 25px; /* Tamaño de letra deseado */
+}
+
+.titulo {
+  margin-bottom: 0;
+  font-size: 5px;
+}
+
+h1 {
+  font-size: 20px;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: smaller;
+  font-size: 20px;
+}
+
+.input{
+    width: 50px;
+    border: 3px solid black;
+    font-size: 15px;
+}
+
+#img_logo {
+  position: absolute; /* Posiciona la imagen de manera absoluta */
+  top: 5px; /* Distancia desde la parte superior del contenedor padre */
+  left: 10px; /* Distancia desde la parte izquierda del contenedor padre */
+  width: 200px; /* Ancho de la imagen */
+  height: 200px; /* Alto de la imagen */
+}
+#img_logo_acre {
+  position: absolute; /* Posiciona la imagen de manera absoluta */
+  top: 400px; /* Distancia desde la parte superior del contenedor padre */
+  left: 17px; /* Distancia desde la parte izquierda del contenedor padre */
+  width: 200px; /* Ancho de la imagen */
+  height: 180px; /* Alto de la imagen */
+}
+#img_escudo {
+  position: absolute; /* Posiciona la imagen de manera absoluta */
+  top: 200px; /* Distancia desde la parte superior del contenedor padre */
+  left: 20px; /* Distancia desde la parte izquierda del contenedor padre */
+  width: 200px; /* Ancho de la imagen */
+  height: 200px; /* Alto de la imagen */
+}
+
+button {
+  border: 4px solid #000000; /* Agrega un borde de 4px y color negro */
+  padding: 4px 6px; /* Agrega un relleno de 4px arriba/abajo y 6px izquierda/derecha */
+  font-size: 13px; /* Ajusta el tamaño de fuente */
+  border-radius: 50%; /* Establece las esquinas redondeadas al 50% para formar un círculo */
+  width: 50px; /* Define un ancho para el botón (puedes ajustarlo según tus necesidades) */
+  height: 50px; /* Define una altura para el botón (puedes ajustarlo según tus necesidades) */
+  font-weight: 700;
+}
+
+#uno {
+  background-color: green; /* Cambia el color de fondo a verde */
+  color: #fff; /* Cambia el color de texto a blanco */
+}
+
+#dos {
+  background-color: green; /* Cambia el color de fondo a verde */
+  color: #fff; /* Cambia el color de texto a blanco */
+}
+
+#tres {
+  background-color: green; /* Cambia el color de fondo a verde */
+  color: #fff; /* Cambia el color de texto a blanco */
+}
+
+#off {
+  background-color: red; /* Cambia el color de fondo a verde */
+  color: #fff; /* Cambia el color de texto a blanco */
+}
+
+#uno_vx {
+  background-color: green; /* Cambia el color de fondo a verde */
+  color: #fff; /* Cambia el color de texto a blanco */
+}
+
+#dos_vx {
+  background-color: green; /* Cambia el color de fondo a verde */
+  color: #fff; /* Cambia el color de texto a blanco */
+}
+
+#tres_vx {
+  background-color: green; /* Cambia el color de fondo a verde */
+  color: #fff; /* Cambia el color de texto a blanco */
+}
+
+#off_vx {
+  background-color: red; /* Cambia el color de fondo a verde */
+  color: #fff; /* Cambia el color de texto a blanco */
+}
+
+#uno_vy {
+  background-color: green; /* Cambia el color de fondo a verde */
+  color: #fff; /* Cambia el color de texto a blanco */
+}
+
+#dos_vy {
+  background-color: green; /* Cambia el color de fondo a verde */
+  color: #fff; /* Cambia el color de texto a blanco */
+}
+
+#tres_vy {
+  background-color: green; /* Cambia el color de fondo a verde */
+  color: #fff; /* Cambia el color de texto a blanco */
+}
+
+#off_vy {
+  background-color: red; /* Cambia el color de fondo a verde */
+  color: #fff; /* Cambia el color de texto a blanco */
+}
+
+<!-- tamaño de fuente -->
+.dato {
+    font-size: 24px;
+    color: red;
+    text-align: center;
+    margin-top: 20px;
+}
+.titulo {
+  font-size: 28px;
+}
+
+#centrar-contenido {
+  text-align: center;
+}
+
+.container {
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.contenedor_out {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  margin-top: -60px;
+}
+
+.texto_superior {
+  position: absolute;
+  top: 90px;
+  right: 0;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 0;
+}
+.texto_superior .bloque2 {
+  margin-top: 30px; /* Agrega el espaciado deseado entre los bloques de texto */
+}
+.texto_superior .bloque3 {
+  margin-top: 45px; /* Agrega el espaciado deseado entre los bloques de texto */
+}
+.texto_superior .bloque4 {
+  margin-top: 45px; /* Agrega el espaciado deseado entre los bloques de texto */
+}
+.texto_superior .bloque5 {
+  margin-top: 35px; /* Agrega el espaciado deseado entre los bloques de texto */
+}
+
+.right, .left {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.left .pilay,
+.right .pilax {
+  font-size: 28px;
+  text-decoration: underline;
+}
+
+.left .humedady {
+  font-size: 20px;
+  text-decoration: underline;
+}
+.right .humedadx {
+  font-size: 20px;
+  text-decoration: underline;
+}
+.left .tempy {
+  font-size: 20px;
+  text-decoration: underline;
+}
+.right .tempx {
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+
+.dato {
+  clear: both;
+  margin-bottom: 5px;
+}
+
+.dato-nombre {
+  font-weight: bold;
+}
+.dato-
+
+#timer {
+  font-size: 24px;
+}
