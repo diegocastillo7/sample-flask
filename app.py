@@ -119,7 +119,4 @@ def obtener_datos():
 
 @app.route('/graficos')
 def graficos():
-    return render_template('graficos.html')
-
-#if __name__ == '__main__':
-#    app.run(host='172.27.7.22', port=5000)
+    return render_template('graficos.html', dataArray=data_grafica)

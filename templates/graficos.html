@@ -9,9 +9,6 @@
 
 <canvas id="chart"></canvas>
 <script>
-    fetch('/grafica')
-    .then(response => response.json())
-    .then(dataArray => {
       // Aquí puedes utilizar los datos obtenidos para graficar el gráfico
       console.log(dataArray); // Muestra los datos en la consola para verificar
 
@@ -79,11 +76,6 @@
       }
     }
   });
-
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
 
 </script>
 
