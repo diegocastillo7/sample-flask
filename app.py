@@ -115,7 +115,7 @@ def obtener_datos():
     cursor.close()
     conn.close()
     print(data_grafica)
-    return data_grafica
+    return render_template('graficos.html', dataArray=data_grafica)
 
 @app.route('/graficos')
 def graficos():
