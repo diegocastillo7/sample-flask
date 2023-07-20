@@ -1,5 +1,7 @@
 from flask import Flask, request, render_template, redirect, jsonify
 import pymysql
+from decimal import Decimal
+
 app = Flask(__name__)
 
 datos = {}
@@ -8,6 +10,7 @@ data_grafica = []
 led_status = 'off'
 valvx_status = 'off'
 valvy_status = 'off'
+
 
 def get_db_connection():
     # Establece la conexión a la base de datos
@@ -21,10 +24,12 @@ def get_db_connection():
     )
     return conn
 
+
 @app.route('/')
 def hello_world():  # put application's code here
     global datos
     return render_template('index.html', datos=datos)
+
 
 @app.route('/datos', methods=['POST'])
 def recibir_datos():
@@ -52,6 +57,7 @@ def recibir_datos():
     conn.close()
     return jsonify({'success': True})
 
+
 @app.route('/led', methods=['GET', 'POST'])
 def led():
     global led_status
@@ -61,9 +67,10 @@ def led():
         led_status = 'off'
         return data
     elif request.method == 'POST':
-        data = request.get_json(force=True) # forzar el tipo de contenido a JSON
+        data = request.get_json(force=True)  # forzar el tipo de contenido a JSON
         led_status = data['value']
         return jsonify({'value': led_status})
+
 
 @app.route('/valvx', methods=['GET', 'POST'])
 def valvx():
@@ -79,6 +86,7 @@ def valvx():
         valvx_status = data['valuevx']
         return jsonify({'valuevx': valvx_status})
 
+
 @app.route('/valvy', methods=['GET', 'POST'])
 def valvy():
     global valvy_status
@@ -93,6 +101,14 @@ def valvy():
         valvy_status = data['valuevy']
         return jsonify({'valuevy': valvy_status})
 
+
+def decimal_to_float(d):
+    for key, value in d.items():
+        if isinstance(value, Decimal):
+            d[key] = float(value)
+    return d
+
+
 @app.route('/datos_grafica', methods=['GET'])
 def obtener_datos():
     conn = get_db_connection()
@@ -103,7 +119,7 @@ def obtener_datos():
     results = cursor.fetchall()
 
     global data_grafica
-    return jsonify({'success': results})
+    print(data_grafica)
 
     for result in results:
         data_grafica.append({
@@ -117,8 +133,9 @@ def obtener_datos():
     cursor.close()
     conn.close()
     print(data_grafica)
-    dataArray = data_grafica
+    dataArray = [decimal_to_float(d) for d in data_grafica]
     return jsonify(dataArray)
+
 
 @app.route('/graficos')
 def graficos():
