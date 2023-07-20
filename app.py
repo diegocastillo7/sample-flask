@@ -97,10 +97,10 @@ def valvy():
 def obtener_datos():
     conn = get_db_connection()
     cursor = conn.cursor()
-    return jsonify({'success': True})
     # Obtiene los datos de la tabla "datos"
     query = "SELECT * FROM Datos"
     cursor.execute(query)
+    return jsonify({'success': True})
 
     results = cursor.fetchall()
     global data_grafica
