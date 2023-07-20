@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -10,72 +12,75 @@
 <canvas id="chart"></canvas>
 <script>
       // Aquí puedes utilizar los datos obtenidos para graficar el gráfico
-      console.log(dataArray); // Muestra los datos en la consola para verificar
+      fetch('/datos_grafica')
+            .then(response => response.json())
+            .then(dataArray => {
 
-      var labels = [];
-  var temperatura_x_values = [];
-  var temperatura_y_values = [];
-  var humedad_x_values = [];
-  var humedad_y_values = [];
+                console.log(dataArray); // Muestra los datos en la consola para verificar
 
-  dataArray.forEach(function(data) {
-    labels.push(data.id);
-    temperatura_x_values.push(data.temperatura_x);
-    temperatura_y_values.push(data.temperatura_y);
-    humedad_x_values.push(data.humedad_x);
-    humedad_y_values.push(data.humedad_y);
-  });
+              var labels = [];
+              var temperatura_x_values = [];
+              var temperatura_y_values = [];
+              var humedad_x_values = [];
+              var humedad_y_values = [];
 
+              dataArray.forEach(function(data) {
+                labels.push(data.id);
+                temperatura_x_values.push(data.temperatura_x);
+                temperatura_y_values.push(data.temperatura_y);
+                humedad_x_values.push(data.humedad_x);
+                humedad_y_values.push(data.humedad_y);
+              });
 
+              // Crea el gráfico utilizando Chart.js
+              var ctx = document.getElementById('chart').getContext('2d');
+              var chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                  labels: labels,
+                  datasets: [
+                    {
+                      label: 'Temperatura X',
+                      data: temperatura_x_values,
+                      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                      borderColor: 'rgba(255, 99, 132, 1)',
+                      borderWidth: 1
+                    },
+                    {
+                      label: 'Temperatura Y',
+                      data: temperatura_y_values,
+                      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                      borderColor: 'rgba(54, 162, 235, 1)',
+                      borderWidth: 1
+                    },
+                    {
+                      label: 'Humedad X',
+                      data: humedad_x_values,
+                      backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                      borderColor: 'rgba(255, 206, 86, 1)',
+                      borderWidth: 1
+                    },
+                    {
+                      label: 'Humedad Y',
+                      data: humedad_y_values,
+                      backgroundColor: 'rgba(0, 255, 0, 0.2)',
+                      borderColor: 'rgba(0, 255, 0, 1)',
+                      borderWidth: 1
+                    }
+                  ]
+                },
+                options: {
+                  responsive: true,
+                  scales: {
+                    y: {
+                      beginAtZero: true
+                    }
+                  }
+                }
+              });
+           })
+        .catch(error => console.error('Error al obtener los datos de la gráfica:', error));
 
-
-
-  // Crea el gráfico utilizando Chart.js
-  var ctx = document.getElementById('chart').getContext('2d');
-  var chart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: 'Temperatura X',
-          data: temperatura_x_values,
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          borderColor: 'rgba(255, 99, 132, 1)',
-          borderWidth: 1
-        },
-        {
-          label: 'Temperatura Y',
-          data: temperatura_y_values,
-          backgroundColor: 'rgba(54, 162, 235, 0.2)',
-          borderColor: 'rgba(54, 162, 235, 1)',
-          borderWidth: 1
-        },
-        {
-          label: 'Humedad X',
-          data: humedad_x_values,
-          backgroundColor: 'rgba(255, 206, 86, 0.2)',
-          borderColor: 'rgba(255, 206, 86, 1)',
-          borderWidth: 1
-        },
-        {
-          label: 'Humedad Y',
-          data: humedad_y_values,
-          backgroundColor: 'rgba(0, 255, 0, 0.2)',
-          borderColor: 'rgba(0, 255, 0, 1)',
-          borderWidth: 1
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
 
 </script>
 

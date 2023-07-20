@@ -93,7 +93,7 @@ def valvy():
         valvy_status = data['valuevy']
         return jsonify({'valuevy': valvy_status})
 
-@app.route('/grafica', methods=['GET'])
+@app.route('/datos_grafica', methods=['GET'])
 def obtener_datos():
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -115,8 +115,9 @@ def obtener_datos():
     cursor.close()
     conn.close()
     print(data_grafica)
-    return render_template('graficos.html', dataArray=data_grafica)
+    dataArray = data_grafica
+    return jsonify(dataArray)
 
 @app.route('/graficos')
 def graficos():
-    return render_template('graficos.html', dataArray=data_grafica)
+    return render_template('graficos.html')
