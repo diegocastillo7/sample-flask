@@ -102,6 +102,7 @@ def obtener_datos():
     cursor.execute(query)
 
     results = cursor.fetchall()
+    return jsonify(results)
     global data_grafica
     for result in results:
         data_grafica.append({
