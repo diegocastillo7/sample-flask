@@ -134,7 +134,7 @@ def obtener_datos():
     conn.close()
     print(data_grafica)
     dataArray = [decimal_to_float(d) for d in data_grafica]
-    return jsonify([])
+    return jsonify(dataArray)
 
 
 @app.route('/graficos')
