@@ -118,10 +118,10 @@ def obtener_datos():
     cursor.execute(query)
     results = cursor.fetchall()
 
-    global data_grafica
-    print(data_grafica)
+    data_grafica = []
 
     for result in results:
+        global data_grafica
         data_grafica.append({
             'id': result[0],
             'temperatura_x': result[1],
