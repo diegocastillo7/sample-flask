@@ -101,9 +101,10 @@ def obtener_datos():
     query = "SELECT * FROM Datos"
     cursor.execute(query)
     results = cursor.fetchall()
-    return jsonify({'success': [0, 1, 2, 3, 0, 0]})
 
     global data_grafica
+    return jsonify({'success': results})
+
     for result in results:
         data_grafica.append({
             'id': result[0],
