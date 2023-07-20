@@ -100,7 +100,7 @@ def obtener_datos():
     # Obtiene los datos de la tabla "datos"
     query = "SELECT * FROM Datos"
     cursor.execute(query)
-    return jsonify({'success': True})
+    return jsonify({'success': [0, 1, 2, 3]})
 
     results = cursor.fetchall()
     global data_grafica
