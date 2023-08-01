@@ -131,9 +131,8 @@ def obtener_datos():
     # Cierra la conexión a la base de datos
     cursor.close()
     conn.close()
-    print(data_grafica)
     dataArray = [decimal_to_float(d) for d in data_grafica]
-    return jsonify(dataArray)
+    return jsonify(dataArray[-1000:])
 
 
 @app.route('/graficos')
