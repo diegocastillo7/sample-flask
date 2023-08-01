@@ -121,7 +121,6 @@ def obtener_datos():
     data_grafica = []
 
     for result in results:
-        global data_grafica
         data_grafica.append({
             'id': result[0],
             'temperatura_x': result[1],
